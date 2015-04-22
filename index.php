@@ -15,8 +15,12 @@ function clearImages()
     shell_exec("rm -rf {$GLOBALS['imagesDir']}/*");
 }
 
-function unzipArchive($comic, $archive)
-{
+/**
+ * Upacks the archieve into temporary directory
+ * @param comic is the name of the comic series to unpack, also the directory name.
+ * @param archive is the name of the issue to unpack, also the the file name.
+ */
+function unzipArchive($comic, $archive){
     $fileType = substr($archive, -3);
     switch ($fileType) {
         case "cbz":
