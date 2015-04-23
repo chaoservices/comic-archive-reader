@@ -1,1 +1,0 @@
-This directory will need to be writeable by your web server, so that PHP can unarchive images into it for display on the page.
