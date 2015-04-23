@@ -10,5 +10,3 @@ I used jquery and prettyPhoto to make the interface look nice when moving throug
 The only steps necessary to make this work are to create directories in the "comics" folder named after your various comic series, and then upload your .cbr and .cbz files into those names directories. The application will dynamically unarchive them into temporary storage for the purposes of viewing them.
 
 Note that your .cbz files need to be .zip files at heart, and your .cbr files need to be .rar files at heart. If you aren't familiar with these file formats you can research them online to find out what that means. It's important in the unarchiving process.
-
-Lastly, I've included a compiled version of the linux program "unrar" that may need execute permissions before .cbr files will work. The native program "unzip" is used for .cbz and should be supported out of the box.
