@@ -1,17 +1,14 @@
 <?php
-
-error_reporting(-1);
+error_reporting(1);
 $GLOBALS['comicsDir'] = "comics";
 $GLOBALS['imagesDir'] = "comic-images";
 
 // used to filter out . and .. from scandir results
-function notJustDots($x)
-{
+function notJustDots($x){
     return substr($x, 0, 1) != ".";
 }
 
-function clearImages()
-{
+function clearImages(){
     shell_exec("rm -rf {$GLOBALS['imagesDir']}/*");
 }
 
@@ -23,11 +20,9 @@ function clearImages()
 function unzipArchive($comic, $archive){
     $fileType = substr($archive, -3);
     switch ($fileType) {
-        case "cbz":
-            shell_exec("unzip {$GLOBALS['comicsDir']}/{$comic}/{$archive} -d {$GLOBALS['imagesDir']}/");
-            break;
-        case "cbr":
-            shell_exec("./unrar e {$GLOBALS['comicsDir']}/{$comic}/{$archive} {$GLOBALS['imagesDir']}/");
+            //shell_exec("unar -o {$GLOBALS['imagesDir']}/ {$GLOBALS['comicsDir']}/{$comic}/{$archive}");
+        case "cbr" || "cbz":
+            shell_exec("unar -o {$GLOBALS['imagesDir']}/ {$GLOBALS['comicsDir']}/'{$comic}/{$archive}'");
             break;
         default:
             return false;
@@ -36,14 +31,12 @@ function unzipArchive($comic, $archive){
     return true;
 }
 
-function scanIssues($series)
-{
+function scanIssues($series){
     $rawList = scandir("{$GLOBALS['comicsDir']}/{$series}/");
     return array_filter($rawList, "notJustDots");
 }
 
-function scanImages($issue)
-{
+function scanImages($issue){
     $rootDir = $GLOBALS['imagesDir'];
     $rawList = scandir("{$rootDir}");
     $filteredList = array_filter($rawList, "notJustDots");
