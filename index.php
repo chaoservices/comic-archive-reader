@@ -146,7 +146,7 @@ $comics = array_filter(scandir($comicsDir), "notJustDots");
         </script>
     </head>
     <body>
-        
+        After selection please give images time to load<br/>        
         Choose a comic:<br/>
         <select id="comicPicker">
             <option>Choose a series</option>
